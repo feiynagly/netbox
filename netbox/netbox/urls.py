@@ -40,6 +40,7 @@ _patterns = [
     url(r'^tenancy/', include('tenancy.urls')),
     url(r'^user/', include('users.urls')),
     url(r'^virtualization/', include('virtualization.urls')),
+    url(r'^modules/', include('modules.urls')),
 
     # API
     url(r'^api/$', APIRootView.as_view(), name='api-root'),

@@ -198,6 +198,39 @@
                         </li>
                     </ul>
                 </li>
+                <!--Modules-->
+                <li class="dropdown{% if request.path|contains:'/modules/' %} active{% endif %}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Modules <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            {% if perms.modules.add_manufacturer %}
+                                <div class="buttons pull-right">
+                                    <a href="{% url 'modules:manufacturer_add' %}" class="btn btn-xs btn-success"
+                                       title="Add"><i
+                                            class="fa fa-plus"></i></a>
+                                    <a href="{% url 'modules:manufacturer_import' %}" class="btn btn-xs btn-info"
+                                       title="Import"><i
+                                            class="fa fa-download"></i></a>
+                                </div>
+                            {% endif %}
+                            <a href="{% url 'modules:manufacturer_list' %}">Module Manufactures</a>
+                        </li>
+                        <li>
+                            {% if perms.modules.add_module %}
+                                <div class="buttons pull-right">
+                                    <a href="{% url 'modules:module_add' %}" class="btn btn-xs btn-success"
+                                       title="Add"><i
+                                            class="fa fa-plus"></i></a>
+                                    <a href="{% url 'modules:module_import' %}" class="btn btn-xs btn-info"
+                                       title="Import"><i
+                                            class="fa fa-download"></i></a>
+                                </div>
+                            {% endif %}
+                            <a href="{% url 'modules:module_list' %}">Module</a>
+                        </li>
+                    </ul>
+                </li>
+                <!--End Modules-->
                 <li class="dropdown{% if request.path|contains:'/ipam/' %} active{% endif %}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">IPAM <span class="caret"></span></a>
                     <ul class="dropdown-menu">
