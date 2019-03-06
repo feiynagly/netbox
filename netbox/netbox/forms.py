@@ -14,6 +14,7 @@ OBJ_TYPE_CHOICES = (
         ('rackgroup', 'Rack Groups'),
         ('devicetype', 'Device types'),
         ('device', 'Devices'),
+        ('module', 'Modules'),
         ('virtualchassis', 'Virtual Chassis'),
         ('cable', 'Cables'),
     )),

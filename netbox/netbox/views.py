@@ -23,6 +23,9 @@ from extras.models import ObjectChange, ReportResult, TopologyMap
 from ipam.filters import AggregateFilter, IPAddressFilter, PrefixFilter, VLANFilter, VRFFilter
 from ipam.models import Aggregate, IPAddress, Prefix, VLAN, VRF
 from ipam.tables import AggregateTable, IPAddressTable, PrefixTable, VLANTable, VRFTable
+from modules.filters import ModuleFilter
+from modules.models import Module
+from modules.tables import ModuleTable
 from secrets.filters import SecretFilter
 from secrets.models import Secret
 from secrets.tables import SecretTable
@@ -81,6 +84,12 @@ SEARCH_TYPES = OrderedDict((
         'filter': DeviceFilter,
         'table': DeviceDetailTable,
         'url': 'dcim:device_list',
+    }),
+    ('module', {
+        'queryset': Module.objects.all(),
+        'filter': ModuleFilter,
+        'table': ModuleTable,
+        'url': 'modules:module_list',
     }),
     ('virtualchassis', {
         'queryset': VirtualChassis.objects.select_related('master').annotate(member_count=Count('members')),

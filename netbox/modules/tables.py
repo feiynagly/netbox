@@ -27,12 +27,19 @@ MODULE_ACTIONS = """
 """
 
 LAST_UPDATED_TIME = """
-{{ value|date:"SHORT_DATETIME_FORMAT" }}
+{{ value|date:"Y-m-d" }}
 """
 
 STATUS_LABEL = """
 <span class="label label-{{ record.get_status_class }}">{{ record.get_status_display}}</span>
 """
+
+
+def get_table_cell_style(width_percentage=10):
+    width_percentage = str(width_percentage)
+    return {'th': {'style': 'text-align:center;width:' + width_percentage + '%'},
+            'td': {'style': 'text-align:center;width:' + width_percentage + '%'}
+            }
 
 
 class ManufacturerTable(BaseTable):
@@ -50,18 +57,20 @@ class ManufacturerTable(BaseTable):
 
 class ModuleTable(BaseTable):
     pk = ToggleColumn()
-    serial = tables.Column(verbose_name='序列号')
-    manufacturer = tables.Column(verbose_name='厂商')
-    rate = tables.Column(verbose_name='速率')
-    type = tables.Column(verbose_name='类型')
-    reach = tables.Column(verbose_name='距离')
-    status = tables.TemplateColumn(template_code=STATUS_LABEL, verbose_name='状态')
-    usage = tables.Column(verbose_name="备注")
+    serial = tables.Column(verbose_name='序列号', attrs=get_table_cell_style(12))
+    manufacturer = tables.Column(verbose_name='厂商', attrs=get_table_cell_style(8))
+    rate = tables.Column(verbose_name='速率', attrs=get_table_cell_style(8))
+    type = tables.Column(verbose_name='类型', attrs=get_table_cell_style(6))
+    reach = tables.Column(verbose_name='距离', attrs=get_table_cell_style(6))
+    status = tables.TemplateColumn(template_code=STATUS_LABEL, verbose_name='状态',
+                                   attrs=get_table_cell_style(8))
+    usage = tables.Column(verbose_name="备注", attrs=get_table_cell_style(34))
     last_updated = tables.TemplateColumn(
         template_code=LAST_UPDATED_TIME,
-        verbose_name='使用时间'
+        verbose_name='入库日期',
+        attrs=get_table_cell_style(8)
     )
-    actions = tables.TemplateColumn(template_code=MODULE_ACTIONS, attrs={'td': {'class': 'text-right'}},
+    actions = tables.TemplateColumn(template_code=MODULE_ACTIONS, attrs=get_table_cell_style(10),
                                     verbose_name='')
 
     class Meta(BaseTable.Meta):

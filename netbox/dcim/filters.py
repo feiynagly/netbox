@@ -456,7 +456,7 @@ class PlatformFilter(NameSlugSearchFilterSet):
         fields = ['name', 'slug']
 
 
-class DeviceFilter(CustomFieldFilterSet):
+class DeviceFilter(CustomFieldFilterSet, django_filters.FilterSet):
     id__in = NumericInFilter(
         field_name='id',
         lookup_expr='in'

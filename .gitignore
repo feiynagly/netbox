@@ -1,8 +1,6 @@
 *.pyc
 /netbox/netbox/configuration.py
 .idea
-/*.sh
 *.swp
-gunicorn_config.py
 .DS_Store
 .vscode
