@@ -67,6 +67,9 @@ PREFER_IPV4 = True
 python3 manage.py migrate
 python3 manage.py createsuperuser
 
+#生成静态文件
+python3 manage.py collectstatic
+
 #测试netbox
 python3 manage.py runserver 0.0.0.0:8000 --insecure
 之后可以通过网页打开netbox
