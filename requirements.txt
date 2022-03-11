@@ -12,7 +12,7 @@ drf-yasg[validation]==1.11.1
 graphviz==0.10.1
 Markdown==2.6.11
 netaddr==0.7.19
-Pillow==5.3.0
+Pillow==9.0.1
 psycopg2-binary==2.7.6.1
 py-gfm==0.1.4
 pycryptodome==3.7.2
